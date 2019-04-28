@@ -10,6 +10,7 @@
 		<title>{{ config('app.name', 'Laravel') }}</title>
 
 		<!-- Scripts -->
+		<script src="{{ asset('js/jquery.min.js') }}"></script>
 		<script src="{{ asset('js/app.js') }}" defer></script>
 
 		<!-- Fonts -->
@@ -21,6 +22,7 @@
 		<link rel="stylesheet" href="{{ asset("css/bootstrap.min.css") }}">
 		<link rel="stylesheet" href="{{ asset("css/dashboard.css") }}">
 		<link href="{{ asset('css/app.css') }}" rel="stylesheet">
+		<link rel="stylesheet" href="{{ asset("css/admin.css") }}">
 	</head>
 	<body>
 		<div id="app">
@@ -47,6 +49,12 @@
 									<a class="nav-link" href="https://getbootstrap.com/docs/4.3/examples/dashboard/#">
 									<i class="fas fa-truck-loading"></i>
 									Orders
+									</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="{{ route("category.index") }}">
+										<i class="fas fa-birthday-cake"></i>
+										Categories
 									</a>
 								</li>
 								<li class="nav-item">

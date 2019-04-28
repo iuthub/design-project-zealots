@@ -17,11 +17,24 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::prefix('admin')->group(function () {
+Route::group(['prefix' => 'admin'], function() {
 	Route::get('/', 'AdminController@index')->name('admin');
-	Route::get('/categories', 'CategoryController@index')->name('category.index');
-	Route::get('/categories/create', 'CategoryController@create')->name('category.create');
+
+	Route::group(["prefix" => "categories"], function () {
+		Route::get('/', 'CategoryController@index')->name('category.index');
+
+		Route::get('create', 'CategoryController@create')->name('category.create');
+		Route::post('create', 'CategoryController@create');
+
+		Route::get('update/{id}', 'CategoryController@update')->name('category.update');
+		Route::post('update/{id}', 'CategoryController@update');
+
+		Route::get('delete/{id}', 'CategoryController@delete')->name('category.delete');
+	});
+
 });
+
+
 
 
 Route::get('logout', 'Auth\LoginController@logout')->name('logout');
