@@ -20,6 +20,20 @@ Auth::routes();
 Route::group(['prefix' => 'admin'], function() {
 	Route::get('/', 'AdminController@index')->name('admin');
 
+
+	Route::group(["prefix" => "sliders"], function () {
+		Route::get('/', 'SliderController@index')->name('slider.index');
+
+		Route::get('create', 'SliderController@create')->name('slider.create');
+		Route::post('create', 'SliderController@create')->name("slider.create.post");
+
+		Route::get('update/{id}', 'SliderController@update')->name('slider.update');
+		Route::post('update/{id}', 'SliderController@update')->name("slider.update.post");
+
+		Route::get('delete/{id}', 'SliderController@delete')->name('slider.delete');
+	});
+
+
 	Route::group(["prefix" => "categories"], function () {
 		Route::get('/', 'CategoryController@index')->name('category.index');
 

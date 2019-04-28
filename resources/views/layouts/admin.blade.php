@@ -63,6 +63,12 @@
 										Products
 									</a>
 								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="{{ route("slider.index") }}">
+										<i class="fas fa-braille"></i>
+										Sliders
+									</a>
+								</li>
 							</ul>
 						</div>
 					</nav>
