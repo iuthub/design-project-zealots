@@ -5,8 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Category;
+use App\Traits\UploadTrait;
+
+
+// GOT UPLOAD Trait FROM https://www.larashout.com/laravel-image-upload-made-easy
 
 class CategoryController extends Controller{
+	use UploadTrait;
 
 	public function __construct(){
 		$this->middleware('auth');
@@ -23,44 +28,46 @@ class CategoryController extends Controller{
 		$category = new Category();
 
 		if ($request->isMethod('post')){
-			$validatedData = $request->validate([
-				'name' => 'required|max:100|min:5',
-				'slug' => 'required|unique:category|max:20|min:5',
-				"desc" => "required"
-			]);
+			$this->validateForm($request, $category);
 
 			$category->name = $request->input("name");
 			$category->slug = $request->input("slug");
 			$category->desc = $request->input("desc");
+
+			if ($request->has('thumbnail')) {
+				$category->thumbnail = $this->evalThumbnail($request);
+			}
 
 			$category->save();
 
 			return redirect()->route("category.index");
 		}
 
-		return view("admin.category.create", ["model" => $category]);
+		return view("admin.category.create", ["model" => $category, "form_url" => "category.create"]);
 	}
 
 	public function update($id, Request $request){
 		$category = Category::find($id);
 
 		if ($category && $request->isMethod('post')){
-			$validatedData = $request->validate([
-				'name' => 'required|max:100|min:5',
-				'slug' => 'required|unique:category,slug,'.$category->id.'|max:20|min:5',
-				"desc" => "required"
-			]);
+			$this->validateForm($request, $category);
+
 
 			$category->name = $request->input("name");
 			$category->slug = $request->input("slug");
 			$category->desc = $request->input("desc");
+
+			if ($request->has('thumbnail')) {
+				$category->thumbnail = $this->evalThumbnail($request);
+			}
+
 
 			$category->save();
 
 			return redirect()->route("category.index");
 		}
 
-		return view("admin.category.update", ["model" => $category]);
+		return view("admin.category.update", ["model" => $category, "form_url" => "category.update"]);
 	}
 
 	public function delete($id){
@@ -71,6 +78,26 @@ class CategoryController extends Controller{
 		}
 
 		return redirect()->route('category.index');
+	}
+
+	protected function validateForm(Request $request, $model){
+		$request->validate([
+			'name' => 'required|max:100|min:5',
+			'slug' => 'required|unique:category,slug,'.$model->id.'|max:20|min:5',
+			"desc" => "required",
+			'thumbnail' => 'image|mimes:jpeg,png,jpg,gif|max:4096'
+		]);
+	}
+
+	protected function evalThumbnail(Request $request){
+		$image = $request->file('thumbnail');
+		$name = str_slug($request->input('name')).'_'.time();
+		$folder = '/uploads/images/';
+		$filePath = $folder.$name.'.'.$image->getClientOriginalExtension();
+
+		$this->uploadOne($image, $folder, 'public', $name);
+
+		return $filePath;
 	}
 
 

@@ -24,10 +24,10 @@ Route::group(['prefix' => 'admin'], function() {
 		Route::get('/', 'CategoryController@index')->name('category.index');
 
 		Route::get('create', 'CategoryController@create')->name('category.create');
-		Route::post('create', 'CategoryController@create');
+		Route::post('create', 'CategoryController@create')->name("category.create.post");
 
 		Route::get('update/{id}', 'CategoryController@update')->name('category.update');
-		Route::post('update/{id}', 'CategoryController@update');
+		Route::post('update/{id}', 'CategoryController@update')->name("category.update.post");
 
 		Route::get('delete/{id}', 'CategoryController@delete')->name('category.delete');
 	});

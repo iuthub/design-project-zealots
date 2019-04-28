@@ -16,6 +16,7 @@
 						<th scope="col">Name</th>
 						<th scope="col">Slug</th>
 						<th scope="col">Desc</th>
+						<th scope="col">Thumb</th>
 						<th></th>
 					</tr>
 				</thead>
@@ -26,6 +27,11 @@
 						<td> {{ $category->name }} </td>
 						<td> {{ $category->slug }} </td>
 						<td> {{ $category->desc }} </td>
+						<td> 
+							@if ($category->thumbnail)
+								<img src="{{ $category->thumbnail }}" style="width: 200px; height: 150px; display: block;">
+							@endif
+						</td>
 						<td><a href="{{ route("category.update", ["id" => $category->id]) }}"><i class="far fa-edit"></i></a>
 							<a href="#" data-id={{ $category->id }} class="delete-item">
 								<i class="fas fa-trash-alt"></i>

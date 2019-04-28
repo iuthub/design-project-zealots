@@ -18,6 +18,7 @@ class CreateCategoryTable extends Migration
 			$table->timestamps();
 			$table->string("name", 100);
 			$table->string("slug", 20);
+			$table->string("thumbnail")->nullable();
 			$table->text("desc");
 		});
 	}
