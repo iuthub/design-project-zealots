@@ -18,6 +18,7 @@
 
 		<!-- Styles -->
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+		<link rel="stylesheet" href="{{ asset("css/bootstrap.min.css") }}">
 		<link rel="stylesheet" href="{{ asset("css/dashboard.css") }}">
 		<link href="{{ asset('css/app.css') }}" rel="stylesheet">
 	</head>
@@ -49,7 +50,7 @@
 									</a>
 								</li>
 								<li class="nav-item">
-									<a class="nav-link" href="https://getbootstrap.com/docs/4.3/examples/dashboard/#">
+									<a class="nav-link" href="{{ route("category.index") }}">
 										<i class="fas fa-coins"></i>
 										Products
 									</a>

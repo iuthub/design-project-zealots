@@ -17,5 +17,11 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('admin', 'AdminController@index')->name('admin');
+Route::prefix('admin')->group(function () {
+	Route::get('/', 'AdminController@index')->name('admin');
+	Route::get('/categories', 'CategoryController@index')->name('category.index');
+	Route::get('/categories/create', 'CategoryController@create')->name('category.create');
+});
+
+
 Route::get('logout', 'Auth\LoginController@logout')->name('logout');
