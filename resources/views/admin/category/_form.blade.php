@@ -23,6 +23,28 @@
 		</div>
 		<div class="col-lg-6">
 			<div class="form-group">
+				<div class="parent">
+					<label for="">Select parent category</label>
+					<select name="parent" id="parent" class="form-control">
+						<option value="0">No parent</option>
+						@foreach($categories as $category)
+							@if($category->id == $model->id)
+								@continue
+							@elseif ($category->id == $model->parent)
+								<option value="{{ $category->id }}" selected="selected">{{ $category->name }}</option>
+							@else
+								<option value="{{ $category->id }}">{{ $category->name }}</option>
+							@endif
+
+						@endforeach
+					</select>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-lg-6">
+			<div class="form-group">
 				<div class="custom-file">
 					<input type="file" name="thumbnail" class="custom-file-input" id="customFile">
 					<label class="custom-file-label" for="customFile">Choose file</label>
