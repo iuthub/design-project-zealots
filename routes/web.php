@@ -11,11 +11,20 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+
+Route::get('/', 'SiteController@welcome')->name('welcome');
+
 
 Auth::routes();
+
+Route::group(['prefix' => 'cart', "name" => "cart"], function() {
+	Route::get('/', 'CartController@index')->name("cart.index");
+	Route::get("add/{id}", 'CartController@add')->name('cart.add');
+	Route::get("remove/{id}", 'CartController@remove')->name('cart.remove');
+
+
+});
 
 Route::group(['prefix' => 'admin'], function() {
 	Route::get('/', 'AdminController@index')->name('admin');
