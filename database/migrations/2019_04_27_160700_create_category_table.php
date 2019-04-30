@@ -19,6 +19,7 @@ class CreateCategoryTable extends Migration
 			$table->string("name", 100);
 			$table->string("slug", 20)->unique();
 			$table->string("thumbnail")->nullable();
+			$table->bigInteger("parent")->default(0)->nullable();
 			$table->text("desc");
 		});
 	}

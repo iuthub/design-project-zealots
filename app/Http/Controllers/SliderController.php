@@ -4,7 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\DB;
+
 use App\Slider;
+use App\SliderItem;
 use App\Traits\UploadTrait;
 
 
@@ -27,13 +31,24 @@ class SliderController extends Controller{
 		$slider = new Slider();
 
 		if ($request->isMethod('post')){
+
 			$this->validateForm($request, $slider);
 
-
-
-
+			$slider->name = $request->input("name");
+			$slider->slug = $request->input("slug");
 			$slider->save();
 
+			if($slider->id){
+				foreach($request->file("media") as $index => $file){
+					$item = new SliderItem();
+
+					$item->url = $request->input("url.".$index);
+					$item->slider_id = $slider->id;
+					$item->image = $this->processImage($file);
+
+					$item->save();
+				}
+			}
 			return redirect()->route("slider.index");
 		}
 
@@ -42,6 +57,46 @@ class SliderController extends Controller{
 	}
 
 	public function update($id, Request $request){
+		$slider = Slider::find($id);
+
+		if($slider){
+			if ($request->isMethod('post')){
+
+				$this->validateForm($request, $slider);
+
+				$slider->name = $request->input("name");
+				$slider->slug = $request->input("slug");
+				$slider->save();
+
+				if($slider->id){
+
+					$delete_ids = $request->input("delete-ids");
+
+					if($delete_ids){
+						$delete_ids = explode(", ", $delete_ids);
+						DB::table('slider_item')->whereIn('id', $delete_ids)->delete();
+					}
+					
+					if($request->file("media")){
+						foreach($request->file("media") as $index => $file){
+							$item = new SliderItem();
+
+							$item->url = $request->input("url.".$index);
+							$item->slider_id = $slider->id;
+							$item->image = $this->processImage($file);
+
+							$item->save();
+						}
+					}
+
+
+				}
+				return redirect()->route("slider.index");
+			}
+
+			return view("admin.slider.update", ["model" => $slider, "form_url" => "slider.update"]);
+		}
+
 
 	}
 
@@ -50,21 +105,23 @@ class SliderController extends Controller{
 	}
 
 	protected function validateForm(Request $request, $model){
-		$request->validate([
+		$validator = $request->validate([
 			'name' => 'required|max:100|min:5',
-			'slug' => 'required|unique:category,slug,'.$model->id.'|max:20|min:5',
-			"desc" => "required",
-			'thumbnail' => 'image|mimes:jpeg,png,jpg,gif|max:4096'
+			'slug' => 'required|unique:slider,slug,'.$model->id.'|max:20',
+			"media.*" => "required|image",
+			"url.*" => "required",
 		]);
+
 	}
 
-	protected function evalThumbnail(Request $request){
-		$image = $request->file('thumbnail');
-		$name = str_slug($request->input('name')).'_'.time();
-		$folder = '/uploads/images/';
-		$filePath = $folder.$name.'.'.$image->getClientOriginalExtension();
+	protected function processImage(UploadedFile $file){
+		$name = $file->hashName();
+		$name = (explode(".", $name)[0]).'_'.time();
 
-		$this->uploadOne($image, $folder, 'public', $name);
+		$folder = '/uploads/slider/';
+		$filePath = $folder.$name.'.'.$file->getClientOriginalExtension();
+
+		$this->uploadOne($file, $folder, 'public', $name);
 
 		return $filePath;
 	}

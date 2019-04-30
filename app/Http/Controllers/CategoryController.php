@@ -26,6 +26,8 @@ class CategoryController extends Controller{
 
 	public function create(Request $request){
 		$category = new Category();
+		$categories = Category::all();
+
 
 		if ($request->isMethod('post')){
 			$this->validateForm($request, $category);
@@ -33,6 +35,7 @@ class CategoryController extends Controller{
 			$category->name = $request->input("name");
 			$category->slug = $request->input("slug");
 			$category->desc = $request->input("desc");
+			$category->parent = $request->input("parent");
 
 			if ($request->has('thumbnail')) {
 				$category->thumbnail = $this->evalThumbnail($request);
@@ -43,12 +46,14 @@ class CategoryController extends Controller{
 			return redirect()->route("category.index");
 		}
 
-		return view("admin.category.create", ["model" => $category, "form_url" => "category.create"]);
+		return view("admin.category.create", ["model" => $category, "categories" => $categories, "form_url" => "category.create"]);
 	}
 
 	public function update($id, Request $request){
 		$category = Category::find($id);
+		$categories = Category::all();
 
+		
 		if ($category && $request->isMethod('post')){
 			$this->validateForm($request, $category);
 
@@ -56,6 +61,7 @@ class CategoryController extends Controller{
 			$category->name = $request->input("name");
 			$category->slug = $request->input("slug");
 			$category->desc = $request->input("desc");
+			$category->parent = $request->input("parent");
 
 			if ($request->has('thumbnail')) {
 				$category->thumbnail = $this->evalThumbnail($request);
@@ -67,7 +73,7 @@ class CategoryController extends Controller{
 			return redirect()->route("category.index");
 		}
 
-		return view("admin.category.update", ["model" => $category, "form_url" => "category.update"]);
+		return view("admin.category.update", ["model" => $category, "categories" => $categories, "form_url" => "category.update"]);
 	}
 
 	public function delete($id){
