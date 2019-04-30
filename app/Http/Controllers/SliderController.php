@@ -101,8 +101,15 @@ class SliderController extends Controller{
 	}
 
 	public function delete($id){
+		$slider = Slider::find($id);
 
+		if($slider){
+			$slider->delete();
+		}
+
+		return redirect()->route('slider.index');
 	}
+
 
 	protected function validateForm(Request $request, $model){
 		$validator = $request->validate([
