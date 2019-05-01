@@ -47,7 +47,113 @@
 			</div>
 		</div>
 		<div class="col-lg-12">
+			<div class="form-group" id="images">
+				<hr>
+				<h2>Product images</h2>
+
+				@if ($form_url == "product.update")
+					@foreach ($model->images as $image)
+					<div class="form-group slide-item">
+						<fieldset>
+
+								<button type="button" class="btn btn-warning remove-item" style="float: right;" data-id="{{ $image->id }}">Delete image</button>
+								<img src="{{ $image->url }}" alt="" style="height: 220px; width: 300px;">
+								<p>Title: {{ $image->title }}</p>
+								<p>Caption: {{ $image->caption }}</p>
+						</fieldset>
+					</div>
+					@endforeach
+				@else
+					<fieldset>
+						<legend>Image</legend>
+						<div class="col-lg-6">
+							<div class="form-group">
+								<div class="custom-file">
+									<label for="images">Select image</label>
+									<input type="file" class="form-control-file" name="images[]" id="images" accept="image/*">
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-6">
+							<div class="form-group">
+								<label for="title">Title</label>
+								<input type="text" name="title[]" class="form-control" />
+							</div>
+						</div>
+						<div class="col-lg-12">
+							<div class="form-group">
+								<label for="caption">Caption</label>
+								<textarea name="caption[]" class="form-control"></textarea>
+							</div>
+						</div>
+					</fieldset>
+				@endif
+
+				<button id="add-item" class="btn btn-primary" style="margin: 0 auto; display: block;" type=button>Add item</button>
+				<input type="hidden" name="delete-ids" id="delete-ids" value="">
+
+			</div>
+		</div>
+		<div class="col-lg-12">
 			<button type="submit" class="btn btn-success">Save</button>
 		</div>
 	</div>
 </form>
+
+<script>
+	function removeItem(){
+		$(".remove-item").click(function(){
+
+			let id = $(this).attr("data-id");
+
+			if(id){
+				let delete_ids = $("#delete-ids").val();
+
+				if(delete_ids)
+					delete_ids = delete_ids.split(", ");
+				else
+					delete_ids = [];
+				
+				delete_ids.push(id);
+				$("#delete-ids").val(delete_ids.join(", "));
+			}
+
+
+			$(this).parent().detach();
+		});
+	}
+
+	$(document).ready(function(){
+		removeItem();
+		$("#add-item").click(function() {
+			let itemsList = $("#images");
+			var fieldset = `<fieldset>
+			<legend>Image</legend>
+					<button type="button" class="btn btn-warning remove-item" style="float: right;">Delete item</button>
+						<div class="col-lg-6">
+							<div class="form-group">
+								<div class="custom-file">
+									<label for="images">Select image</label>
+									<input type="file" class="form-control-file" name="images[]" id="images" accept="image/*">
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-6">
+							<div class="form-group">
+								<label for="title">Title</label>
+								<input type="text" name="title[]" class="form-control" />
+							</div>
+						</div>
+						<div class="col-lg-12">
+							<div class="form-group">
+								<label for="caption">Caption</label>
+								<textarea name="caption[]" class="form-control"></textarea>
+							</div>
+						</div>
+				</fieldset>`;
+
+			itemsList.append(fieldset);
+			removeItem();
+		});
+	})
+</script>

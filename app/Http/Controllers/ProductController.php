@@ -6,7 +6,12 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Product;
 use App\Category;
+use App\ProductImage;
 use App\Traits\UploadTrait;
+use Illuminate\Http\UploadedFile;
+
+use Illuminate\Support\Facades\DB;
+
 
 
 // GOT UPLOAD Trait FROM https://www.larashout.com/laravel-image-upload-made-easy
@@ -40,6 +45,22 @@ class ProductController extends Controller{
 
 			$product->save();
 
+
+			if ($request->has('images')) {
+				foreach($request->file("images") as $index => $file){
+					$image = new ProductImage();
+
+					$image->title = $request->input("title.".$index);
+					$image->product_id = $product->id;
+					$image->url = $this->processImage($file);
+					$image->caption = $request->input("caption.".$index);
+
+					$image->save();
+				}
+			}
+
+
+
 			return redirect()->route("product.index");
 		}
 
@@ -60,6 +81,27 @@ class ProductController extends Controller{
 			$product->desc = $request->input("desc");
 
 			$product->save();
+
+			$delete_ids = $request->input("delete-ids");
+
+			if($delete_ids){
+				$delete_ids = explode(", ", $delete_ids);
+				DB::table('product_image')->whereIn('id', $delete_ids)->delete();
+			}
+
+			if ($request->has('images')) {
+				foreach($request->file("images") as $index => $file){
+
+					$image = new ProductImage();
+
+					$image->title = $request->input("title.".$index);
+					$image->product_id = $product->id;
+					$image->url = $this->processImage($file);
+					$image->caption = $request->input("caption.".$index);
+
+					$image->save();
+				}
+			}
 
 			return redirect()->route("product.index");
 		}
@@ -84,6 +126,19 @@ class ProductController extends Controller{
 			"category_id" => "required|numeric|gte:0",
 			"desc" => "required",
 		]);
+	}
+
+	protected function processImage(UploadedFile $file){
+
+		$name = $file->hashName();
+		$name = (explode(".", $name)[0]).'_'.time();
+
+		$folder = '/uploads/product/';
+		$filePath = $folder.$name.'.'.$file->getClientOriginalExtension();
+
+		$this->uploadOne($file, $folder, 'public', $name);
+
+		return $filePath;
 	}
 
 }

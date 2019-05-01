@@ -54,7 +54,7 @@
 				<fieldset>
 					<div class="form-group">
 						<label for="media">Image</label>
-						<input type="file" name="media[]" class="form-control" />
+						<input type="file" name="media[]" class="form-control" accept="image/*"/>
 					</div>
 					<div class="form-group">
 						<label for="url">Url</label>

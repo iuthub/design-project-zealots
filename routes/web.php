@@ -13,7 +13,11 @@
 
 
 
-Route::get('/', 'SiteController@welcome')->name('welcome');
+Route::get('/', 'SiteController@index')->name('index');
+
+Route::group(['prefix' => 'site', "name" => "site"], function() {
+	Route::get('product/{id}', 'SiteController@product')->name("site.product");
+});
 
 
 Auth::routes();

@@ -17,10 +17,16 @@ class SiteController extends Controller{
 
 	}
 
-	public function welcome(){
+	public function index(){
 		$products = Product::all();
 
-		return view("welcome", ["products" => $products]);
+		return view("index", ["products" => $products]);
+	}
+
+	public function product($id){
+		$product = Product::find($id);
+
+		return view("product", ["product" => $product]);
 	}
 
 
