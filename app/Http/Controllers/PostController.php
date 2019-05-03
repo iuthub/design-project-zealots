@@ -32,7 +32,6 @@ class PostController extends Controller{
 	public function create(Request $request){
 		$post = new Post();
 
-
 		if ($request->isMethod('post')){
 			$this->validateForm($request, $post);
 
