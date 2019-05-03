@@ -64,6 +64,12 @@
 									</a>
 								</li>
 								<li class="nav-item">
+									<a class="nav-link" href="{{ route("review.index") }}">
+										<i class="far fa-comment-dots"></i>
+										Reviews
+									</a>
+								</li>
+								<li class="nav-item">
 									<a class="nav-link" href="{{ route("post.index") }}">
 										<i class="far fa-copy"></i>
 										Posts

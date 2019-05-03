@@ -15,6 +15,7 @@
 						<th scope="col">ID</th>
 						<th scope="col">Title</th>
 						<th scope="col">Slug</th>
+						<th scope="col">Status</th>
 						<th scope="col">Thumbnail</th>
 						<th></th>
 					</tr>
@@ -25,6 +26,7 @@
 						<th scope="row"> {{ $post->id }} </th>
 						<td> {{ $post->title }} </td>
 						<td> {{ $post->slug }} </td>
+						<td> {{ $post->getStatus() }}</td>
 						<td> 
 							@if ($post->thumbnail)
 								<img src="{{ $post->thumbnail }}" style="width: 200px; height: 150px; display: block;">

@@ -1,18 +1,29 @@
 @extends('layouts.app')
 @section('content')
 <div class="content container">
-	@foreach ($products as $product)
-	<div class="col-lg-4">
-		<div class="card">
-			<div class="card-body">
-				<h5 class="card-title">{{ $product->name }}</h5>
-				<p class="card-text">{{ $product->desc }}</p>
-				<a href="{{ route("cart.add", ["id" => $product->id])}}" class="btn btn-success">Add to cart</a>
-				<a href="{{ route("site.product", ["id" => $product->id])}}" class="btn btn-primary">View</a>
+	<div class="products page-block">
+		<div class="row">
+			<div class="col-lg-12">
+				<h2>Recently added products</h2>
+				<a href="#" class="btn btn-primary all-list">All products</a>
 			</div>
 		</div>
+		<div class="row">
+			@foreach ($products as $product)
+			<div class="col-lg-4">
+				<div class="card">
+					<div class="card-body">
+						<h5 class="card-title">{{ $product->name }}</h5>
+						<p class="card-text">{{ $product->desc }}</p>
+						<a href="{{ route("cart.add", ["id" => $product->id])}}" class="btn btn-success">Add to cart</a>
+						<a href="{{ route("site.product", ["id" => $product->id])}}" class="btn btn-primary">View</a>
+					</div>
+				</div>
+			</div>
+			@endforeach
+		</div>
 	</div>
-	@endforeach
+
 	<div class="blog page-block">
 		<div class="row">
 			<div class="col-lg-12">
