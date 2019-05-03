@@ -64,6 +64,12 @@
 									</a>
 								</li>
 								<li class="nav-item">
+									<a class="nav-link" href="{{ route("post.index") }}">
+										<i class="far fa-copy"></i>
+										Posts
+									</a>
+								</li>
+								<li class="nav-item">
 									<a class="nav-link" href="{{ route("slider.index") }}">
 										<i class="fas fa-braille"></i>
 										Sliders
