@@ -82,7 +82,19 @@
 									<div class="card border-primary">
 										<div class="card-body">
 											<h5 class="card-title"><b>{{ $review->getAuthorName() }}</b></h5>
-											<p>Score: {{ $review->rating }}</p>
+											
+											<div class="rating">
+												<ul>
+													@for ($b = 1; $b <= 5; $b++)
+														@if ($b > $review->rating)
+															<li><i class="far fa-star"></i></li>
+														@else
+															<li><i class="fas fa-star"></i></li>
+														@endif
+
+													@endfor
+												</ul>
+											</div>
 											<p class="card-text">{{ $review->comment }}</p>
 											<p class="card-text"><small class="text-muted">{{ $review->getDate() }}</small></p>
 
@@ -156,4 +168,5 @@
 		</div>
 	</div>
 </div>
+
 @endsection

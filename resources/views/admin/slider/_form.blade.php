@@ -110,7 +110,7 @@
 					<button type="button" class="btn btn-warning remove-item" style="float: right;">Delete item</button>
 					<div class="form-group" style="margin-top: 20px;">
 						<label for="media">Image</label>
-						<input type="file" name="media[]" class="form-control" />
+						<input type="file" name="media[]" class="form-control" accept="image/*" />
 					</div>
 					<div class="form-group">
 						<label for="url">Url</label>
