@@ -10,6 +10,8 @@
 	<title>{{ config('app.name', 'Laravel') }}</title>
 
 	<!-- Scripts -->
+	<script src="https://api-maps.yandex.ru/2.1/?apikey=53aec716-0db9-4fbd-9ddc-ab87990ae22f
+&lang=en_US" type="text/javascript"></script>
 	<script src="{{ asset('js/app.js') }}" defer></script>
 
 	<!-- Fonts -->
@@ -86,6 +88,35 @@
 		<main class="py-4">
 			@yield('content')
 		</main>
+
+		<footer>
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-lg-6">
+						<div id="map" style="width: 100%; height: 400px"></div>
+					</div>
+					<div class="col-lg-6 f-contact">
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam fugiat, sit cupiditate sequi fugit laudantium dolor, eaque maiores, natus deleniti nesciunt minima tenetur ipsam aliquid labore et hic dolorem quod.</p>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam fugiat, sit cupiditate sequi fugit laudantium dolor, eaque maiores, natus deleniti nesciunt minima tenetur ipsam aliquid labore et hic dolorem quod.</p>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam fugiat, sit cupiditate sequi fugit laudantium dolor, eaque maiores, natus deleniti nesciunt minima tenetur ipsam aliquid labore et hic dolorem quod.</p>
+					</div>
+				</div>
+			</div>
+		</footer>
+
+		<script type="text/javascript">
+			ymaps.ready(init);
+			var myMap, myPlacemark;
+
+			function init(){     
+			    myMap = new ymaps.Map("map", {
+			        center: [41.338646, 69.334777],
+			        zoom: 16
+			    });
+			    myPlacemark = new ymaps.Placemark([41.338646, 69.334777], { hintContent: 'Inha!'});
+			    myMap.geoObjects.add(myPlacemark);
+			}
+		</script>
 	</div>
 </body>
 </html>
