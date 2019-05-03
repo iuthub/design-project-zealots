@@ -17,6 +17,7 @@ Route::get('/', 'SiteController@index')->name('index');
 
 Route::group(['prefix' => 'site', "name" => "site"], function() {
 	Route::get('product/{id}', 'SiteController@product')->name("site.product");
+	Route::get('post/{id}', 'SiteController@post')->name("site.post");
 });
 
 
@@ -27,11 +28,22 @@ Route::group(['prefix' => 'cart', "name" => "cart"], function() {
 	Route::get("add/{id}", 'CartController@add')->name('cart.add');
 	Route::get("remove/{id}", 'CartController@remove')->name('cart.remove');
 
-
 });
 
 Route::group(['prefix' => 'admin'], function() {
 	Route::get('/', 'AdminController@index')->name('admin');
+
+	Route::group(["prefix" => "posts"], function () {
+		Route::get('/', 'PostController@index')->name('post.index');
+
+		Route::get('create', 'PostController@create')->name('post.create');
+		Route::post('create', 'PostController@create')->name("post.create.post");
+
+		Route::get('update/{id}', 'PostController@update')->name('post.update');
+		Route::post('update/{id}', 'PostController@update')->name("post.update.post");
+
+		Route::get('delete/{id}', 'PostController@delete')->name('post.delete');
+	});
 
 
 	Route::group(["prefix" => "sliders"], function () {

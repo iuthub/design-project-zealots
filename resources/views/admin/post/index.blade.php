@@ -3,7 +3,7 @@
 <div class="content">
 	<div class="row">
 		<div class="col-lg-12">
-			<a href="{{ route("category.create") }} "><button type="button" class="btn btn-primary">Create Category</button></a>
+			<a href="{{ route("post.create") }} "><button type="button" class="btn btn-primary">Create Post</button></a>
 		</div>
 	</div>
 
@@ -13,30 +13,27 @@
 				<thead class="thead-dark">
 					<tr>
 						<th scope="col">ID</th>
-						<th scope="col">Name</th>
+						<th scope="col">Title</th>
 						<th scope="col">Slug</th>
-						<th scope="col">Desc</th>
 						<th scope="col">Thumbnail</th>
 						<th></th>
 					</tr>
 				</thead>
 				<tbody>
-					@foreach ($categories as $category)
+					@foreach ($posts as $post)
 					<tr>
-						<th scope="row"> {{ $category->id }} </th>
-						<td> {{ $category->name }} </td>
-						<td> {{ $category->slug }} </td>
-						<td> {{ $category->desc }} </td>
+						<th scope="row"> {{ $post->id }} </th>
+						<td> {{ $post->title }} </td>
+						<td> {{ $post->slug }} </td>
 						<td> 
-							@if ($category->thumbnail)
-								<img src="{{ $category->thumbnail }}" style="width: 200px; height: 150px; display: block;">
+							@if ($post->thumbnail)
+								<img src="{{ $post->thumbnail }}" style="width: 200px; height: 150px; display: block;">
 							@endif
 						</td>
-						<td><a href="{{ route("category.update", ["id" => $category->id]) }}"><i class="far fa-edit"></i></a>
-							<a href="#" data-id={{ $category->id }} class="delete-item">
+						<td><a href="{{ route("post.update", ["id" => $post->id]) }}"><i class="far fa-edit"></i></a>
+							<a href="#" data-id={{ $post->id }} class="delete-item">
 								<i class="fas fa-trash-alt"></i>
 							</a>
-
 						</td>
 					</tr>
 					@endforeach
