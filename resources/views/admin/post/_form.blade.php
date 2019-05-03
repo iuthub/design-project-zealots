@@ -3,6 +3,24 @@
 	<div class="row">
 		<div class="col-lg-6">
 			<div class="form-group">
+				<div class="status">
+					<label for="">Set status</label>
+					<select name="status" id="status" class="form-control">
+						@foreach($statuses as $status)
+							@if ($status == $model->status)
+								<option value="{{ $status }}" selected="selected">{{ ucfirst($status) }}</option>
+							@else
+								<option value="{{ $status }}">{{ ucfirst($status) }}</option>
+							@endif
+						@endforeach
+					</select>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-lg-6">
+			<div class="form-group">
 				<label for="title">Title</label>
 				<input type="text" class="form-control @error('title') is-invalid @enderror" name="title" value="{{ $model->title }}" required minlength="5" maxlength="100">
 
