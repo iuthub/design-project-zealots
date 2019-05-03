@@ -46,8 +46,6 @@ class PostController extends Controller{
 
 			$post->save();
 
-
-
 			return redirect()->route("post.index");
 		}
 
