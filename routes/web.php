@@ -15,10 +15,14 @@
 
 Route::get('/', 'SiteController@index')->name('index');
 
+Route::get('aboutus', 'SiteController@aboutus')->name('aboutus');
+
 Route::group(['prefix' => 'site', "name" => "site"], function() {
+
 	Route::get('product/{id}', 'SiteController@product')->name("site.product");
 	Route::get('post/{id}', 'SiteController@post')->name("site.post");
-
+	Route::get("products", "SiteController@products")->name("site.products");
+	Route::get("posts", "SiteController@posts")->name("site.posts");
 
 });
 

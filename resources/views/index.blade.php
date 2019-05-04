@@ -70,7 +70,7 @@
 		<div class="row">
 			<div class="col-lg-12 block-title-wrap">
 				<h2 class="block-title">Recently added products</h2>
-				<a href="#" class="btn btn-primary all-list">All products</a>
+				<a href="{{ route("site.products") }}" class="btn btn-primary all-list">All products</a>
 			</div>
 		</div>
 		<div class="row">
@@ -101,7 +101,7 @@
 		<div class="row">
 			<div class="col-lg-12 block-title-wrap">
 				<h2 class="block-title">Blog</h2>
-				<a href="#" class="btn btn-primary all-list">All post</a>
+				<a href="{{ route("site.posts") }}" class="btn btn-primary all-list">All post</a>
 			</div>
 		</div>
 		<div class="row">

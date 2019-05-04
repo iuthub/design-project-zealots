@@ -12,6 +12,7 @@
 	<!-- Scripts -->
 	<script src="https://api-maps.yandex.ru/2.1/?apikey=53aec716-0db9-4fbd-9ddc-ab87990ae22f
 &lang=en_US" type="text/javascript"></script>
+	<script src="{{ asset('js/jquery.min.js') }}"></script>
 	<script src="{{ asset('js/app.js') }}" defer></script>
 
 	<!-- Fonts -->
@@ -39,7 +40,7 @@
 					<!-- Left Side Of Navbar -->
 					<ul class="navbar-nav mr-auto">
 						<li class="nav-item">
-							<a href="#" class="nav-link">About us</a>
+							<a href="{{ route("aboutus") }}" class="nav-link">About us</a>
 						</li>
 						<li class="nav-item">
 							<a href="#" class="nav-link">Delivery</a>
@@ -51,11 +52,16 @@
 
 					<!-- Right Side Of Navbar -->
 					<ul class="navbar-nav ml-auto">
+
 						<li class="nav-item">
 							<a href="{{ route("cart.index") }}" class="nav-link cart">
 								{{ count($cart->products) }} <i class="fas fa-shopping-cart"></i> 
 							</a>
 						</li>
+						<li class="nav-item">
+							<h4 class="nav-link" style="color: #000; font-weight: bold;">CALL: +998 (97) 777-22-77</h4>
+						</li>
+
 						<!-- Authentication Links -->
 						@guest
 							<li class="nav-item">
@@ -101,9 +107,13 @@
 						<div id="map" style="width: 100%; height: 400px"></div>
 					</div>
 					<div class="col-lg-6 f-contact">
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam fugiat, sit cupiditate sequi fugit laudantium dolor, eaque maiores, natus deleniti nesciunt minima tenetur ipsam aliquid labore et hic dolorem quod.</p>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam fugiat, sit cupiditate sequi fugit laudantium dolor, eaque maiores, natus deleniti nesciunt minima tenetur ipsam aliquid labore et hic dolorem quod.</p>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam fugiat, sit cupiditate sequi fugit laudantium dolor, eaque maiores, natus deleniti nesciunt minima tenetur ipsam aliquid labore et hic dolorem quod.</p>
+						<h4 style="color: #000; font-weight: bold;">CALL: +998 (97) 777-22-77</h4>
+						<h2>Our company is here!</h2>
+						<p>We are really old and honored company!. If you need to buy electronic products or want to sell them you must come to us!</p>
+						<p>We will wait for you 24/7 11/2.</p>
+						<p>Find us on map below!</p>
+						<p>Or contact us thorugh Contact us page.</p>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam est neque sequi odit, dolor illum pariatur atque, inventore nobis molestiae natus, ratione debitis ducimus. Nobis quasi, temporibus eligendi doloribus neque!</p>
 					</div>
 				</div>
 			</div>
