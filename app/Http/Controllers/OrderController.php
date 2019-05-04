@@ -72,5 +72,17 @@ class OrderController extends Controller{
 	}
 
 
+	public function delete($id){
+		$order = Order::find($id);
+
+		if($order){
+			$order->delete();
+		}
+
+		return redirect()->route('order.index');
+	}
+
+
+
 
 }

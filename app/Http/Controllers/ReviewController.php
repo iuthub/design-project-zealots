@@ -75,13 +75,13 @@ class ReviewController extends Controller{
 	}
 
 	public function delete($id){
-		$post = Post::find($id);
+		$review = Review::find($id);
 
-		if($post){
-			$post->delete();
+		if($review){
+			$review->delete();
 		}
 
-		return redirect()->route('post.index');
+		return redirect()->route('review.index');
 	}
 
 	protected function validateForm(Request $request, $model){
