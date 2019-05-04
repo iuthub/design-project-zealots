@@ -10,7 +10,7 @@
 			</div>
 			<div class="row">
 				<div class="col-lg-6">
-					<div class="slider">
+					<div class="slider-wrap">
 						<div id="product-images-carousel" class="carousel slide" data-ride="carousel">
 							<ol class="carousel-indicators">
 								@foreach( $product->images as $index => $image)
@@ -105,7 +105,7 @@
 								</div>
 								@endforeach
 							</div>
-							<form method="POST" action="{{ route("review.create", ["id" => $product->id]) }}">
+							<form method="POST" action="{{ route("review.create", ["id" => $product->id]) }}" id="form">
 								@csrf
 								<div class="row">
 									<div class="col-lg-6">
@@ -124,7 +124,7 @@
 									<div class="col-lg-4">
 										<div class="form-group">
 											<label for="name">Your name *</label>
-											<input type="text" class="form-control @error('name') is-invalid @enderror" name="name" required maxlength="100">
+											<input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name" required maxlength="100">
 											@error('name')
 											<div class="alert alert-danger">{{ $message }}</div>
 											@enderror
@@ -133,7 +133,7 @@
 									<div class="col-lg-4">
 										<div class="form-group">
 											<label for="email">Your email *</label>
-											<input type="text" class="form-control @error('email') is-invalid @enderror" name="email" required maxlength="100">
+											<input type="text" class="form-control @error('email') is-invalid @enderror" name="email" id="email" required maxlength="100">
 											@error('email')
 											<div class="alert alert-danger">{{ $message }}</div>
 											@enderror
@@ -142,7 +142,7 @@
 									<div class="col-lg-4">
 										<div class="form-group">
 											<label for="phone">Your phone</label>
-											<input type="text" class="form-control @error('phone') is-invalid @enderror" name="phone">
+											<input type="text" class="form-control @error('phone') is-invalid @enderror" id="phone" name="phone">
 											@error('phone')
 											<div class="alert alert-danger">{{ $message }}</div>
 											@enderror
@@ -161,8 +161,8 @@
 										</div>
 									</div>
 								</div>
-								<button typ="submit" class="btn btn-success">Submit</button>
 							</form>
+							<button class="btn btn-success" id="submit-form">Submit</button>
 						</div>
 					</div>
 				</div>
@@ -171,5 +171,34 @@
 	</div>
 </div>
 
+<script>
+	$(document).ready( function() {
 
+		$("#submit-form").click( function(){
+			let name_r = new RegExp("^[a-zA-Z ]+$");
+			let email_r = new RegExp("^\S+@\S+\.\S+$");
+			let phone_r = new RegExp("^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$");
+
+
+			if(!name_r.test( $("#name").val() )){
+				alert("Check entered name!");
+				return;
+			}
+
+			if(!email_r.test( $("#email").val() )){
+				console.log( $("#email").val());
+				alert("Check entered email!");
+				return;
+			}
+
+			if(!phone_r.test( $("#phone").val() )){
+				alert("Check entered phone!");
+				return;
+			}
+
+
+			$("#form").submit();
+		});
+	});
+</script>
 @endsection

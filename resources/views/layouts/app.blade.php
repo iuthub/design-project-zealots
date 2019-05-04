@@ -12,6 +12,7 @@
 	<!-- Scripts -->
 	<script src="https://api-maps.yandex.ru/2.1/?apikey=53aec716-0db9-4fbd-9ddc-ab87990ae22f
 &lang=en_US" type="text/javascript"></script>
+	<script src="{{ asset('js/jquery.min.js') }}"></script>
 	<script src="{{ asset('js/app.js') }}" defer></script>
 
 	<!-- Fonts -->
