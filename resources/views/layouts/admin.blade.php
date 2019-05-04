@@ -58,6 +58,12 @@
 									</a>
 								</li>
 								<li class="nav-item">
+									<a class="nav-link" href="{{ route("tag.index") }}">
+									<i class="fas fa-tags"></i>
+									Tags
+									</a>
+								</li>
+								<li class="nav-item">
 									<a class="nav-link" href="{{ route("product.index") }}">
 										<i class="fas fa-coins"></i>
 										Products

@@ -43,6 +43,19 @@ Route::group(['prefix' => 'admin', "middleware" => "auth"], function() {
 	Route::get('/', 'AdminController@index')->name('admin');
 
 
+	Route::group(["prefix" => "tags"], function () {
+		Route::get('/', 'TagController@index')->name('tag.index');
+
+		Route::get('create', 'TagController@create')->name('tag.create');
+		Route::post('create', 'TagController@create')->name("tag.create.post");
+
+		Route::get('update/{id}', 'TagController@update')->name('tag.update');
+		Route::post('update/{id}', 'TagController@update')->name("tag.update.post");
+
+		Route::get('delete/{id}', 'TagController@delete')->name('tag.delete');
+	});
+
+
 	Route::group(["prefix" => "orders"], function () {
 		Route::get('/', 'OrderController@index')->name('order.index');
 
