@@ -27,7 +27,7 @@
 </head>
 <body>
 	<div id="app">
-		<nav class="navbar navbar-expand-md navbar-light navbar-laravel">
+		<nav class="navbar navbar-dark bg-dark navbar-expand-md navbar-light navbar-laravel fixed-top">
 			<div class="container">
 				<a class="navbar-brand" href="{{ url('/') }}">
 					{{ config('app.name', 'Laravel') }}
@@ -43,9 +43,6 @@
 							<a href="{{ route("aboutus") }}" class="nav-link">About us</a>
 						</li>
 						<li class="nav-item">
-							<a href="#" class="nav-link">Delivery</a>
-						</li>
-						<li class="nav-item">
 							<a href="#" class="nav-link">Contact us</a>
 						</li>
 					</ul>
@@ -59,7 +56,7 @@
 							</a>
 						</li>
 						<li class="nav-item">
-							<h4 class="nav-link" style="color: #000; font-weight: bold;">CALL: +998 (97) 777-22-77</h4>
+							<h4 class="nav-link" style="color: #fff; font-weight: bold;">CALL: +998 (97) 777-22-77</h4>
 						</li>
 
 						<!-- Authentication Links -->
