@@ -19,7 +19,7 @@ class CreatePostTable extends Migration
 			$table->string("slug");
 			$table->text("content");
 			$table->string("thumbnail")->nullable();
-			$table->string("status")->default("moderation");
+			$table->string("status")->nullable()->default("moderation");
 			$table->timestamps();
 		});
 	}

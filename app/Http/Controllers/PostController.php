@@ -38,6 +38,7 @@ class PostController extends Controller{
 			$post->title = $request->input("title");
 			$post->slug = $request->input("slug");
 			$post->content = $request->input("content");
+			$post->status = $request->input("status");
 
 
 			if ($request->has('thumbnail')) {
@@ -49,7 +50,7 @@ class PostController extends Controller{
 			return redirect()->route("post.index");
 		}
 
-		return view("admin.post.create", ["model" => $post, "form_url" => "post.create"]);
+		return view("admin.post.create", ["model" => $post, "statuses" => Post::$statuses, "form_url" => "post.create"]);
 	}
 
 
@@ -63,7 +64,7 @@ class PostController extends Controller{
 			$post->title = $request->input("title");
 			$post->slug = $request->input("slug");
 			$post->content = $request->input("content");
-
+			$post->status = $request->input("status");
 
 			if ($request->has('thumbnail')) {
 				$post->thumbnail = $this->evalThumbnail($request);
@@ -74,7 +75,7 @@ class PostController extends Controller{
 			return redirect()->route("post.index");
 		}
 
-		return view("admin.post.update", ["model" => $post, "form_url" => "post.update"]);
+		return view("admin.post.update", ["model" => $post, "statuses" => Post::$statuses, "form_url" => "post.update"]);
 	}
 
 	public function delete($id){

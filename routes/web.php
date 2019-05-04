@@ -18,8 +18,11 @@ Route::get('/', 'SiteController@index')->name('index');
 Route::group(['prefix' => 'site', "name" => "site"], function() {
 	Route::get('product/{id}', 'SiteController@product')->name("site.product");
 	Route::get('post/{id}', 'SiteController@post')->name("site.post");
+
+
 });
 
+Route::post('review/create/{id}', 'ReviewController@create')->name("review.create");
 
 Auth::routes();
 
@@ -30,8 +33,37 @@ Route::group(['prefix' => 'cart', "name" => "cart"], function() {
 
 });
 
-Route::group(['prefix' => 'admin'], function() {
+Route::group(['prefix' => 'order', "name" => "order"], function() {
+	Route::get('create', 'OrderController@create')->name("order.create");
+
+});
+
+
+Route::group(['prefix' => 'admin', "middleware" => "auth"], function() {
 	Route::get('/', 'AdminController@index')->name('admin');
+
+
+	Route::group(["prefix" => "orders"], function () {
+		Route::get('/', 'OrderController@index')->name('order.index');
+
+
+		Route::get('update/{id}', 'OrderController@update')->name('order.update');
+		Route::post('update/{id}', 'OrderController@update')->name("order.update.post");
+
+		Route::get('delete/{id}', 'OrderController@delete')->name('order.delete');
+	});
+
+
+	Route::group(["prefix" => "reviews"], function () {
+		Route::get('/', 'ReviewController@index')->name('review.index');
+
+
+		Route::get('update/{id}', 'ReviewController@update')->name('review.update');
+		Route::post('update/{id}', 'ReviewController@update')->name("review.update.post");
+
+		Route::get('delete/{id}', 'ReviewController@delete')->name('review.delete');
+	});
+
 
 	Route::group(["prefix" => "posts"], function () {
 		Route::get('/', 'PostController@index')->name('post.index');

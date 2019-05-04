@@ -45,6 +45,7 @@
 							<button type="button" class="btn btn-warning remove-item" style="float: right;" data-id="{{ $item->id }}">Delete item</button>
 							<img src="{{ $item->image }}" alt="" style="height: 220px; width: 300px;">
 							<p>URL: {{ $item->url }}</p>
+							<p>Text: {{ $item->text }}</p>
 
 						</div>
 					</fieldset>
@@ -59,6 +60,10 @@
 					<div class="form-group">
 						<label for="url">Url</label>
 						<input type="text" name="url[]" class="form-control" />
+					</div>
+					<div class="form-group">
+						<label for="url">Text</label>
+						<textarea name="text[]" class="form-control"></textarea>
 					</div>
 				</fieldset>
 			@endif
@@ -115,6 +120,10 @@
 					<div class="form-group">
 						<label for="url">Url</label>
 						<input type="text" name="url[]" class="form-control" />
+					</div>
+					<div class="form-group">
+						<label for="url">Text</label>
+						<textarea name="text[]" class="form-control"></textarea>
 					</div>
 				</fieldset>`;
 

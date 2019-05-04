@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
 
+	const MODERATION = 'moderation';
+	const PUBLISHED = 'published';
+
 	protected $table = 'product';
 
 	public function category()
@@ -20,5 +23,12 @@ class Product extends Model
 
 	public function images(){
 		return $this->hasMany("App\ProductImage", "product_id");
+	}
+
+	public function getFirstImg(){
+		if(!count($this->images))
+			return "/img/no-image.svg";
+		else
+			return $this->images[0]->url;
 	}
 }

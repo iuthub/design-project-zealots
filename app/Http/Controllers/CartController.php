@@ -27,7 +27,7 @@ class CartController extends Controller{
 
 		$cart->addProduct($id);
 
-		return redirect()->route("cart.index");
+		return redirect()->back();
 	}
 
 	public function remove($id, Request $request){
@@ -35,7 +35,7 @@ class CartController extends Controller{
 
 		$cart->removeProduct($id);
 
-		return redirect()->route("cart.index");
+		return redirect()->back();
 	}
 
 
