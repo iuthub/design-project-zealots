@@ -45,6 +45,7 @@ class SliderController extends Controller{
 					$item->url = $request->input("url.".$index);
 					$item->slider_id = $slider->id;
 					$item->image = $this->processImage($file);
+					$item->text = $request->input("text.".$index);
 
 					$item->save();
 				}
@@ -84,6 +85,7 @@ class SliderController extends Controller{
 							$item->url = $request->input("url.".$index);
 							$item->slider_id = $slider->id;
 							$item->image = $this->processImage($file);
+							$item->text = $request->input("text.".$index);
 
 							$item->save();
 						}
@@ -117,6 +119,7 @@ class SliderController extends Controller{
 			'slug' => 'required|unique:slider,slug,'.$model->id.'|max:20',
 			"media.*" => "required|image",
 			"url.*" => "required",
+			"text.*" => "required"
 		]);
 
 	}

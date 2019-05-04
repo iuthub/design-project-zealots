@@ -10,12 +10,20 @@
 						<div class="carousel-item active">
 							<a href="{{ $item->url}}" style="display: block;">
 								<img src="{{ $item->image }}" class="d-block w-100" alt="{{ $item->url }}">
+								<div class="carousel-caption d-none d-md-block">
+									<h5>{{ $item->text }}</h5>
+								
+								</div>
 							</a>
 						</div>
 					@else
 						<div class="carousel-item">
 							<a href="{{ $item->url}}" style="display: block;">
 								<img src="{{ $item->image }}" class="d-block w-100" alt="{{ $item->url }}">
+								<div class="carousel-caption d-none d-md-block">
+									<h5>{{ $item->text }}</h5>
+							
+								</div>
 							</a>
 						</div>
 					@endif
@@ -68,20 +76,28 @@
 		<div class="row">
 			@foreach ($products as $product)
 			<div class="col-lg-4">
-				<div class="card">
+				<div class="card" style="width: 18rem;">
+					<img src="{{ $product->getFirstImg() }}" class="card-img-top" alt="">
 					<div class="card-body">
 						<h5 class="card-title">{{ $product->name }}</h5>
 						<p class="card-text">{{ $product->desc }}</p>
-						<a href="{{ route("cart.add", ["id" => $product->id])}}" class="btn btn-success">Add to cart</a>
+						@if ($cart->has($product->id))
+							<a href="{{ route("cart.remove", ["id" => $product->id])}}" class="btn btn-danger">Remove from cart</a>
+						@else
+							<a href="{{ route("cart.add", ["id" => $product->id])}}" class="btn btn-success">Add to cart</a>
+						@endif
 						<a href="{{ route("site.product", ["id" => $product->id])}}" class="btn btn-primary">View</a>
 					</div>
 				</div>
 			</div>
+
 			@endforeach
 		</div>
 	</div>
-	<div class="separator"></div>
-	<div class="blog page-block">
+</div>
+
+<div class="blog page-block">
+	<div class="container" style="background: #fff">
 		<div class="row">
 			<div class="col-lg-12 block-title-wrap">
 				<h2 class="block-title">Blog</h2>
@@ -110,7 +126,8 @@
 			@endforeach
 		</div>
 	</div>
-	<div class="separator"></div>
+</div>
+<div class="container">
 	<div id="reviews" class="page-block">
 		<div class="row">
 			<div class="col-lg-12 block-title-wrap">
@@ -186,5 +203,7 @@
 			</div>
 		</div>
 	</div>
+</div>
+
 </div>
 @endsection

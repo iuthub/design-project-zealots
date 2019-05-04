@@ -18,6 +18,7 @@ class CreateSliderItemTable extends Migration
 			$table->bigInteger("slider_id");
 			$table->string("url");
 			$table->string("image");
+			$table->string("text");
 			$table->timestamps();
 		});
 	}

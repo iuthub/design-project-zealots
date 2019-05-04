@@ -1,3 +1,146 @@
+@font-face {
+  font-family: "Lato";
+  src: url("fonts/lato/Lato-Regular.woff2") format("woff2"), url("Lato-Regular.woff") format("woff");
+}
+@font-face {
+  font-family: "Lato-bold";
+  src: url("fonts/lato/Lato-Bold.woff2") format("woff2"), url("Lato-Bold.woff") format("woff");
+}
+@font-face {
+  font-family: "Lato-light";
+  src: url("fonts/lato/Lato-Light.woff2") format("woff2"), url("Lato-Light.woff") format("woff");
+}
+body {
+  font-size: 14px;
+  color: #333;
+  font-family: "Lato";
+  background: #fff;
+}
+
+.gold {
+  background: #F2BF62;
+  color: #F2BF62;
+}
+
+.clr {
+  clear: both;
+}
+
+footer {
+  margin-top: 50px;
+  background: #efefef;
+}
+footer .f-contact {
+  margin-top: 20px;
+  text-align: right;
+}
+
+.rating ul {
+  list-style: none;
+  padding-left: 0;
+  text-align: center;
+}
+.rating ul li {
+  display: inline-block;
+  margin: 0 5px;
+  color: #F2BF62;
+}
+
+.reviews-list .rating ul {
+  text-align: left;
+}
+
+.slider {
+  height: 580px;
+}
+.slider #main-carousel {
+  height: 100%;
+}
+.slider #main-carousel .carousel-inner, .slider #main-carousel .carousel-item, .slider #main-carousel a, .slider #main-carousel img {
+  height: 100%;
+}
+.slider #main-carousel .carousel-caption h5 {
+  font-size: 50px;
+}
+
+.page-block {
+  margin: 20px 0;
+}
+
+.content-wrapper {
+  margin-top: 20px;
+}
+
+.cart {
+  font-weight: bold;
+  color: #000;
+  font-size: 18px;
+}
+.cart i {
+  color: red;
+  font-size: 22px;
+}
+
+.separator {
+  border-bottom: solid 1px #cacaca;
+  width: 100%;
+  height: 1px;
+  margin: 20px 0;
+}
+
+.blog {
+  background: mediumpurple;
+}
+
+#why-us .icons {
+  text-align: center;
+}
+#why-us .icons i {
+  font-size: 50px;
+  color: #55C3B6;
+  margin-bottom: 10px;
+}
+#why-us .icons h3 {
+  font-weight: bold;
+}
+
+#reviews img {
+  width: 100%;
+  height: 210px;
+}
+#reviews .product-title {
+  text-align: center;
+}
+#reviews .product-title a:hover {
+  color: red;
+}
+#reviews .avatar {
+  width: 33%;
+  display: inline-block;
+  float: left;
+}
+#reviews .avatar img {
+  height: 75px;
+  border-radius: 100%;
+}
+#reviews .name {
+  display: inline-block;
+  width: 66%;
+  padding-left: 10px;
+  margin-top: 25px;
+}
+#reviews .carousel-control-next, #reviews .carousel-control-prev {
+  color: red;
+  width: 5%;
+  font-size: 30px;
+}
+#reviews .carousel-control-prev {
+  left: -55px;
+}
+#reviews .carousel-control-next {
+  right: -55px;
+}
+
 .content {
   background: #fff;
   padding: 20px 10px;
@@ -16,8 +159,17 @@
   margin-right: 10px;
 }
 
-.page-block h2 {
+.reviews-list .row {
+  margin: 20px 0;
+}
+
+.page-block .block-title-wrap {
+  margin: 20px 0;
+}
+.page-block .block-title {
   display: inline-block;
+  font-weight: bold;
+  margin: 0;
 }
 .page-block .all-list {
   float: right;

@@ -10,6 +10,12 @@ class Post extends Model
 	const MODERATION = 'moderation';
 	const PUBLISHED = 'published';
 
+
+	public static $statuses = [
+		self::MODERATION,
+		self::PUBLISHED
+	];
+	
 	protected $fillable = ['title', "slug", "content", "thumbnail", "status"];
 
 	protected $table = 'post';
@@ -18,6 +24,11 @@ class Post extends Model
 	public function getDate(){
 		return date("M j", strtotime($this->created_at));
 	}
+
+	public function getStatus(){
+		return ucfirst($this->status);
+	}
+
 
 	public function getExcerpt(){
 		if (strlen($this->content) < 30) {

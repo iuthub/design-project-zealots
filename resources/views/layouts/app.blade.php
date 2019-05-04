@@ -51,6 +51,11 @@
 
 					<!-- Right Side Of Navbar -->
 					<ul class="navbar-nav ml-auto">
+						<li class="nav-item">
+							<a href="{{ route("cart.index") }}" class="nav-link cart">
+								{{ count($cart->products) }} <i class="fas fa-shopping-cart"></i> 
+							</a>
+						</li>
 						<!-- Authentication Links -->
 						@guest
 							<li class="nav-item">
@@ -85,7 +90,7 @@
 			</div>
 		</nav>
 
-		<main class="py-4">
+		<main>
 			@yield('content')
 		</main>
 
@@ -108,13 +113,13 @@
 			ymaps.ready(init);
 			var myMap, myPlacemark;
 
-			function init(){     
-			    myMap = new ymaps.Map("map", {
-			        center: [41.338646, 69.334777],
-			        zoom: 16
-			    });
-			    myPlacemark = new ymaps.Placemark([41.338646, 69.334777], { hintContent: 'Inha!'});
-			    myMap.geoObjects.add(myPlacemark);
+			function init(){
+				myMap = new ymaps.Map("map", {
+					center: [41.338646, 69.334777],
+					zoom: 16
+				});
+				myPlacemark = new ymaps.Placemark([41.338646, 69.334777], { hintContent: 'Inha!'});
+				myMap.geoObjects.add(myPlacemark);
 			}
 		</script>
 	</div>

@@ -40,13 +40,13 @@
 						<div class="sidebar-sticky">
 							<ul class="nav flex-column">
 								<li class="nav-item">
-									<a class="nav-link" href="https://getbootstrap.com/docs/4.3/examples/dashboard/#">
+									<a class="nav-link" href="{{ route("admin") }}">
 									<i class="fas fa-tachometer-alt"></i>
 									Dashboard
 									</a>
 								</li>
 								<li class="nav-item">
-									<a class="nav-link" href="https://getbootstrap.com/docs/4.3/examples/dashboard/#">
+									<a class="nav-link" href="{{ route("order.index") }}">
 									<i class="fas fa-truck-loading"></i>
 									Orders
 									</a>
