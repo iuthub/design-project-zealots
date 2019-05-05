@@ -24,7 +24,7 @@ Route::group(['prefix' => 'site', "name" => "site"], function() {
 	Route::get('post/{id}', 'SiteController@post')->name("site.post");
 	Route::get("products", "SiteController@products")->name("site.products");
 
-	Route::get("products/cat/{id}", "SiteController@category")->name("site.products");
+	Route::get("products/cat/{id}", "SiteController@category");
 	Route::post("search", "SiteController@products")->name("site.search");
 	Route::get("posts", "SiteController@posts")->name("site.posts");
 
