@@ -1,17 +1,17 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace BrandShop\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
-use App\Product;
-use App\Post;
-use App\Review;
-use App\Slider;
-use App\SliderItem;
-use App\Cart;
+use BrandShop\Product;
+use BrandShop\Post;
+use BrandShop\Review;
+use BrandShop\Slider;
+use BrandShop\SliderItem;
+use BrandShop\Cart;
 
 
 class SiteController extends Controller{
@@ -63,6 +63,16 @@ class SiteController extends Controller{
 		$cart = Cart::getCart($request->session()->getId());
 
 		return view("aboutus", ["cart" => $cart]);
+	}
+
+	public function contact(Request $request){
+		$cart = Cart::getCart($request->session()->getId());
+
+		return view("contact", ["cart" => $cart]);
+	}
+
+	public function feedbackSend(Request $request){
+
 	}
 
 }

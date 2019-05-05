@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace BrandShop;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -26,12 +26,12 @@ class Order extends Model
 	protected $table = 'order';
 
 	public function products(){
-		return $this->belongsToMany('App\Product', "order_product", "order_id", "product_id");
+		return $this->belongsToMany('BrandShop\Product', "order_product", "order_id", "product_id");
 	}
 
 
 	public function user(){
-		return $this->belongsTo("App\User");
+		return $this->belongsTo("BrandShop\User");
 	}
 
 }

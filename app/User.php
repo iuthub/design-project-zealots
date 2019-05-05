@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace BrandShop;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -38,6 +38,6 @@ class User extends Authenticatable
 	];
 
 	public function orders(){
-		return $this->hasMany("App\Order");
+		return $this->hasMany("BrandShop\Order");
 	}
 }

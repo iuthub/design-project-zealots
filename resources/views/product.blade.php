@@ -176,7 +176,7 @@
 
 		$("#submit-form").click( function(){
 			let name_r = new RegExp("^[a-zA-Z ]+$");
-			let email_r = new RegExp("^\S+@\S+\.\S+$");
+
 			let phone_r = new RegExp("^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$");
 
 
@@ -185,7 +185,7 @@
 				return;
 			}
 
-			if(!email_r.test( $("#email").val() )){
+			if(!/\S+@\S+\.\S+/.test( $("#email").val() )){
 				console.log( $("#email").val());
 				alert("Check entered email!");
 				return;

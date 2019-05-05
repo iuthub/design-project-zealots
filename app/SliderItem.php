@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace BrandShop;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -12,6 +12,6 @@ class SliderItem extends Model
 	protected $table = 'slider_item';
 	
 	public function slider(){
-		return $this->belongsTo("App\Slider");
+		return $this->belongsTo("BrandShop\Slider");
 	}
 }

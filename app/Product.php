@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace BrandShop;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -14,15 +14,15 @@ class Product extends Model
 
 	public function category()
 	{
-		return $this->belongsTo('App\Category');
+		return $this->belongsTo('BrandShop\Category');
 	}
 
 	public function orders(){
-		return $this->belongsToMany('App\Order', "order_product", "product_id", "order_id");
+		return $this->belongsToMany('BrandShop\Order', "order_product", "product_id", "order_id");
 	}
 
 	public function images(){
-		return $this->hasMany("App\ProductImage", "product_id");
+		return $this->hasMany("BrandShop\ProductImage", "product_id");
 	}
 
 	public function getFirstImg(){

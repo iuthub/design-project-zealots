@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace BrandShop;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -20,11 +20,11 @@ class Review extends Model
 	protected $table = 'review';
 	
 	public function product(){
-		return $this->belongsTo("App\Product");
+		return $this->belongsTo("BrandShop\Product");
 	}
 
 	public function user(){
-		return $this->belongsTo("App\User");
+		return $this->belongsTo("BrandShop\User");
 	}
 
 	public function getAuthorName(){

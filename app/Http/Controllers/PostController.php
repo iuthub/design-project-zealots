@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace BrandShop\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Traits\UploadTrait;
+use BrandShop\Traits\UploadTrait;
 use Illuminate\Http\UploadedFile;
 
-use App\Post;
+use BrandShop\Post;
 use Illuminate\Support\Facades\DB;
 
 

@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace BrandShop\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\DB;
 
-use App\Slider;
-use App\SliderItem;
-use App\Traits\UploadTrait;
+use BrandShop\Slider;
+use BrandShop\SliderItem;
+use BrandShop\Traits\UploadTrait;
 
 
 // GOT UPLOAD Trait FROM https://www.larashout.com/laravel-image-upload-made-easy

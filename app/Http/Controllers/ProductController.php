@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace BrandShop\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Product;
-use App\Category;
-use App\ProductImage;
-use App\Traits\UploadTrait;
+use BrandShop\Product;
+use BrandShop\Category;
+use BrandShop\ProductImage;
+use BrandShop\Traits\UploadTrait;
 use Illuminate\Http\UploadedFile;
 
 use Illuminate\Support\Facades\DB;

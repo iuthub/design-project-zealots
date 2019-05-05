@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace BrandShop;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -13,6 +13,6 @@ class Category extends Model
 
 	public function products()
 	{
-		return $this->hasMany("App\Product");
+		return $this->hasMany("BrandShop\Product");
 	}
 }
