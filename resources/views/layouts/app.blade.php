@@ -45,6 +45,9 @@
 						<li class="nav-item">
 							<a href="{{ route("contact") }}" class="nav-link">Contact us</a>
 						</li>
+						<li class="nav-item">
+							<a href="{{ route("external") }}" class="nav-link">External</a>
+						</li>
 					</ul>
 
 					<!-- Right Side Of Navbar -->
