@@ -12,7 +12,8 @@ use BrandShop\Review;
 use BrandShop\Slider;
 use BrandShop\SliderItem;
 use BrandShop\Cart;
-
+use BrandShop\Chuck;
+use BrandShop\Category;
 
 class SiteController extends Controller{
 	
@@ -44,11 +45,25 @@ class SiteController extends Controller{
 		return view("post", ["post" => $post, "cart" => $cart]);
 	}
 
+
+	public function category($id, Request $request){
+		$cart = Cart::getCart($request->session()->getId());
+		$products = Product::where(["category_id" => $id])->paginate(15);
+		$categories = Category::all();
+
+		return view("products", ["products" => $products, "categories" => $categories, "cart" => $cart]);
+	}
+
 	public function products(Request $request){
 		$cart = Cart::getCart($request->session()->getId());
 		$products = Product::paginate(15);
+		$categories = Category::all();
 
-		return view("products", ["products" => $products, "cart" => $cart]);
+		if ($request->isMethod('post')){
+			$products = Product::orWhere([["name", "like", "%".$request->input("search")."%" ], ["desc", "like", "%".$request->input("search")."%" ]])->paginate(15);
+		}
+
+		return view("products", ["products" => $products, "categories" => $categories, "cart" => $cart]);
 	}
 
 	public function posts(Request $request){
@@ -73,6 +88,13 @@ class SiteController extends Controller{
 
 	public function feedbackSend(Request $request){
 
+	}
+
+	public function external(Request $request){
+		$cart = Cart::getCart($request->session()->getId());
+		$quote = Chuck::getRandomQuote();
+
+		return view("external", ["cart" => $cart, "quote" => $quote]);
 	}
 
 }

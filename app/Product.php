@@ -31,4 +31,6 @@ class Product extends Model
 		else
 			return $this->images[0]->url;
 	}
+
+
 }
