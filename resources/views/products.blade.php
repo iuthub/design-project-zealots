@@ -3,6 +3,27 @@
 <div class="content-wrapper page-block">
 	<div class="container">
 		<div class="row">
+			<div class="col-lg-12">
+				<h4>Categories: </h4>
+				<ul class="nav justify-content-center">
+					@foreach($categories as $cat)
+						<li class="nav-item">
+							<a class="nav-link active" href="/site/products/cat/{{ $cat->id }}">{{ $cat->name }}</a>
+						</li>
+					@endforeach
+				</ul>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-12">
+				<form method="POST" class="form-inline my-2 my-lg-0" action="{{ route("site.search") }}">
+					@csrf
+					<input class="form-control mr-sm-2" type="search" name="search" placeholder="Search" aria-label="Search">
+					<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+				</form>
+			</div>
+		</div>
+		<div class="row">
 			<div class="col-lg-12 block-title-wrap">
 				<h2 class="block-title">Products</h2>
 			</div>
