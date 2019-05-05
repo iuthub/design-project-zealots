@@ -16,6 +16,7 @@
 Route::get('/', 'SiteController@index')->name('index');
 
 Route::get('aboutus', 'SiteController@aboutus')->name('aboutus');
+Route::get('contact', 'SiteController@contact')->name('contact');
 
 Route::group(['prefix' => 'site', "name" => "site"], function() {
 
@@ -24,6 +25,7 @@ Route::group(['prefix' => 'site', "name" => "site"], function() {
 	Route::get("products", "SiteController@products")->name("site.products");
 	Route::get("posts", "SiteController@posts")->name("site.posts");
 
+	Route::post("feedbacksend", "SiteController@feedbackSend")->name("feedback.send");
 });
 
 Route::post('review/create/{id}', 'ReviewController@create')->name("review.create");
@@ -43,7 +45,7 @@ Route::group(['prefix' => 'order', "name" => "order"], function() {
 });
 
 
-Route::group(['prefix' => 'admin', "middleware" => "auth"], function() {
+Route::group(['prefix' => 'admin', 'middleware' => 'adminMid'], function() {
 	Route::get('/', 'AdminController@index')->name('admin');
 
 

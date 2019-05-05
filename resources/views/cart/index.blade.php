@@ -4,6 +4,7 @@
 	<div class="container" style="padding-bottom: 250px;">
 		<div class="row">
 			<div class="col-lg-9">
+				<h2>Products in your cart.</h2>
 				<table class="table table-hover table-bordered">
 					<thead>
 						<tr>

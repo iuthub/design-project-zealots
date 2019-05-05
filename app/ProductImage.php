@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace BrandShop;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -11,6 +11,6 @@ class ProductImage extends Model
 	protected $table = 'product_image';
 
 	public function product(){
-		return $this->belongsTo("App\Product", "id", "product_id");
+		return $this->belongsTo("BrandShop\Product", "id", "product_id");
 	}
 }

@@ -1,10 +1,10 @@
 <?php
 
-namespace App;
+namespace BrandShop;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
-use App\Product;
+use BrandShop\Product;
 
 class Cart extends Model
 {
@@ -13,7 +13,7 @@ class Cart extends Model
 	protected $fillable = ["session_id", "user_id"];
 
 	public function products(){
-		return $this->belongsToMany('App\Product', "cart_product", "cart_id", "product_id");
+		return $this->belongsToMany('BrandShop\Product', "cart_product", "cart_id", "product_id");
 	}
 
 	public function addProduct($id){

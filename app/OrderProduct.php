@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace BrandShop;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -12,7 +12,7 @@ class OrderProduct extends Model
 	protected $table = 'order_product';
 	
 	public function order(){
-		return $this->belongsTo("App\Order");
+		return $this->belongsTo("BrandShop\Order");
 	}
 
 }

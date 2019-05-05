@@ -30,7 +30,7 @@
 		<nav class="navbar navbar-dark bg-dark navbar-expand-md navbar-light navbar-laravel fixed-top">
 			<div class="container">
 				<a class="navbar-brand" href="{{ url('/') }}">
-					{{ config('app.name', 'Laravel') }}
+					{{ config('app.name', 'BrandShop') }}
 				</a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
 					<span class="navbar-toggler-icon"></span>
@@ -43,21 +43,23 @@
 							<a href="{{ route("aboutus") }}" class="nav-link">About us</a>
 						</li>
 						<li class="nav-item">
-							<a href="#" class="nav-link">Contact us</a>
+							<a href="{{ route("contact") }}" class="nav-link">Contact us</a>
 						</li>
 					</ul>
 
 					<!-- Right Side Of Navbar -->
 					<ul class="navbar-nav ml-auto">
-
-						<li class="nav-item">
-							<a href="{{ route("cart.index") }}" class="nav-link cart">
-								{{ count($cart->products) }} <i class="fas fa-shopping-cart"></i> 
-							</a>
-						</li>
-						<li class="nav-item">
-							<h4 class="nav-link" style="color: #fff; font-weight: bold;">CALL: +998 (97) 777-22-77</h4>
-						</li>
+						
+						@if (isset($cart))
+							<li class="nav-item">
+								<a href="{{ route("cart.index") }}" class="nav-link cart">
+									{{ count($cart->products) }} <i class="fas fa-shopping-cart"></i> 
+								</a>
+							</li>
+							<li class="nav-item">
+								<h4 class="nav-link" style="color: #fff; font-weight: bold;">CALL: +998 (97) 777-22-77</h4>
+							</li>
+						@endif
 
 						<!-- Authentication Links -->
 						@guest

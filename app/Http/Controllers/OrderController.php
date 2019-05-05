@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace BrandShop\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use App\Order;
-use App\Cart;
-use App\OrderProduct;
+use BrandShop\Order;
+use BrandShop\Cart;
+use BrandShop\OrderProduct;
 
 
 class OrderController extends Controller{

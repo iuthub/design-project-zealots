@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace BrandShop\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Tag;
+use BrandShop\Tag;
 
 use Illuminate\Support\Facades\DB;
 

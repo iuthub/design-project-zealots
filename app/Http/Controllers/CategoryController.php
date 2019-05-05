@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace BrandShop\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Category;
-use App\Traits\UploadTrait;
+use BrandShop\Category;
+use BrandShop\Traits\UploadTrait;
 
 
 // GOT UPLOAD Trait FROM https://www.larashout.com/laravel-image-upload-made-easy
