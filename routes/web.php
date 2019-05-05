@@ -26,6 +26,8 @@ Route::group(['prefix' => 'site', "name" => "site"], function() {
 	Route::get("posts", "SiteController@posts")->name("site.posts");
 
 	Route::post("feedbacksend", "SiteController@feedbackSend")->name("feedback.send");
+
+	Route::get("external", "SiteController@external")->name("external");
 });
 
 Route::post('review/create/{id}', 'ReviewController@create')->name("review.create");

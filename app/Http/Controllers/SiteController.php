@@ -12,6 +12,7 @@ use BrandShop\Review;
 use BrandShop\Slider;
 use BrandShop\SliderItem;
 use BrandShop\Cart;
+use BrandShop\Chuck;
 
 
 class SiteController extends Controller{
@@ -73,6 +74,13 @@ class SiteController extends Controller{
 
 	public function feedbackSend(Request $request){
 
+	}
+
+	public function external(Request $request){
+		$cart = Cart::getCart($request->session()->getId());
+		$quote = Chuck::getRandomQuote();
+
+		return view("external", ["cart" => $cart, "quote" => $quote]);
 	}
 
 }

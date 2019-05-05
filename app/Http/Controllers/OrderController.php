@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\DB;
 use BrandShop\Order;
 use BrandShop\Cart;
 use BrandShop\OrderProduct;
+use Illuminate\Support\Facades\Mail;
+use BrandShop\Mail\OrderCreated;
 
 
 class OrderController extends Controller{
@@ -67,6 +69,9 @@ class OrderController extends Controller{
 		}
 
 		$cart->products()->sync([]);
+
+
+		// Mail::to($order->user->email)->send(new OrderCreated($order));
 
 		return redirect()->route("index");
 	}

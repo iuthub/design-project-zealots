@@ -4,9 +4,10 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-12">
+				<h2>Send your message us!</h2>
 				<form method="POST" action="{{ route("feedback.send") }}" id="form">
 					@csrf
-					@if (!Auth::check())
+
 					<div class="row">
 						<div class="col-lg-4">
 							<div class="form-group">
@@ -36,7 +37,6 @@
 							</div>
 						</div>
 					</div>
-					@endif
 					<div class="row">
 						<div class="col-lg-12">
 							<div class="form-group">
@@ -54,4 +54,35 @@
 		</div>
 	</div>
 </div>
+
+<script>
+	$(document).ready( function() {
+
+		$("#submit-form").click( function(){
+			let name_r = new RegExp("^[a-zA-Z ]+$");
+
+			let phone_r = new RegExp("^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$");
+
+
+			if(!name_r.test( $("#name").val() )){
+				alert("Check entered name!");
+				return;
+			}
+
+			if(!/\S+@\S+\.\S+/.test( $("#email").val() )){
+				console.log( $("#email").val());
+				alert("Check entered email!");
+				return;
+			}
+
+			if(!phone_r.test( $("#phone").val() )){
+				alert("Check entered phone!");
+				return;
+			}
+
+
+			$("#form").submit();
+		});
+	});
+</script>
 @endsection
